@@ -4,4 +4,10 @@
 
 .footer {
   max-height: 150px;
+  z-index: 3;
+  position: relative; 
+}
+
+.side-bar {
+  z-index: 2;
 }

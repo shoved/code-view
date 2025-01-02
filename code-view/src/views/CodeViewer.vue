@@ -1,9 +1,16 @@
 <template>
-  <h1>Welcome to the CodeViewer Page</h1>
+  <v-container fluid>
+    <AppSideBar />
+  </v-container>
 </template>
 
-<script>
+<script lang="ts">
+import AppSideBar from '../components/AppSideBar.vue';
+
 export default {
   name: 'CodeViewer',
+  components: {
+    AppSideBar,
+  },
 };
 </script>
