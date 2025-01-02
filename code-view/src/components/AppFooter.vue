@@ -22,7 +22,7 @@ const navButtons = ref([
 </script>
 
 <template>
-  <v-footer flat color="primary" app class="footer">
+  <v-footer flat color="secondary" app class="footer">
     <v-row justify="center" no-gutters>
       <v-btn
         v-for="button in navButtons"
@@ -30,7 +30,7 @@ const navButtons = ref([
         :to="button.to"
         flat
         class="nav-btn"
-        color="primary"
+        color="secondary"
       >
         {{ button.text }}
       </v-btn>
