@@ -22,7 +22,7 @@ const navButtons = ref([
 </script>
 
 <template>
-  <v-app-bar flat color="primary" app>
+  <v-app-bar flat color="primary">
     <v-toolbar-title>{{ title }}</v-toolbar-title>
 
     <v-spacer></v-spacer>
