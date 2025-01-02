@@ -7,7 +7,7 @@ import License from '../views/License.vue';
 const routes = [
     { path: '/', name: 'Home', component: Home },
     { path: '/code-viewer', name: 'CodeViewer', component: CodeViewer },
-    { path: '/docs', name: 'Documentation', component: Documentation },
+    { path: '/documentation', name: 'Documentation', component: Documentation },
     { path: '/license', name: 'License', component: License },
 ];
 
