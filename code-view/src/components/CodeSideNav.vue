@@ -53,12 +53,12 @@ const openFolder = ref(
       {
         key: '1-0',
         label: 'barcelona.jpg',
-        icon: 'pi pi-fw pi-file-image'
+        icon: 'pi pi-fw pi-image',
       },
       {
         key: '1-1',
         label: 'logo.png',
-        icon: 'pi pi-fw pi-file-image'
+        icon: 'pi pi-fw pi-image',
       },
     ],
   },
