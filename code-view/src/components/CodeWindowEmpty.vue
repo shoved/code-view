@@ -3,7 +3,7 @@ const title = ref("Welcome to Code Viewer");
 </script>
 
 <template>
-  <v-container fluid class="pa-0" height="100%">
+  <v-container fluid class="pa-2" height="100%">
     <div>{{ title }}</div>
   </v-container>
 </template>
