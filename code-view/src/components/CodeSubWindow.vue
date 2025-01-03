@@ -60,9 +60,9 @@ export default {
 <style scoped lang="scss">
 /* Scoped styles for a specific TabView */
 ::v-deep(.p-tab) {
-  height: 32px;
+  height: 42px;
   padding: 0 1rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 ::v-deep(.p-tabview-nav) {
