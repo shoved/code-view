@@ -1,51 +1,5 @@
 <script setup lang="ts">
-const windows: Ref<CodeSubWindowInfo[]> = ref([
-  {
-    id: 1,
-    files: [
-      {
-        name: 'File1.txt',
-        content: 'This is the content of File1.txt',
-        language: 'text',
-      },
-      {
-        name: 'File2.py',
-        content: 'This is the content of File2.py',
-        language: 'python',
-      },
-    ],
-  },
-  {
-    id: 1,
-    files: [
-      {
-        name: 'File1.txt',
-        content: 'This is the content of File1.txt',
-        language: 'text',
-      },
-      {
-        name: 'File2.py',
-        content: 'This is the content of File2.py',
-        language: 'python',
-      },
-    ],
-  },
-  {
-    id: 1,
-    files: [
-      {
-        name: 'File1.txt',
-        content: 'This is the content of File1.txt',
-        language: 'text',
-      },
-      {
-        name: 'File2.py',
-        content: 'This is the content of File2.py',
-        language: 'python',
-      },
-    ],
-  },
-]);
+const windows = ref(codeViewWindows)
 
 const windowWidth = computed(() => {
   return Math.floor(85 / (windows.value.length || 1));
@@ -73,7 +27,7 @@ const windowWidth = computed(() => {
         v-if="windows.length === 0"
         :size="85"
       >
-        <div class="text-center">No windows open</div>
+        <CodeWindowEmpty />
       </SplitterPanel>
     </Splitter>
   </v-container>
@@ -81,12 +35,13 @@ const windowWidth = computed(() => {
 
 <script lang="ts">
 import CodeSideNav from './CodeSideNav.vue';
-import { type CodeSubWindowInfo } from './CodeSubWindow.vue';
 import CodeSubWindow from './CodeSubWindow.vue';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
-import { type Ref, ref, computed } from 'vue';
+import { ref, computed } from 'vue';
 import CodeToolbar from './CodeToolbar.vue';
+import CodeWindowEmpty from './CodeWindowEmpty.vue';
+import { codeViewWindows } from '../mock-data/code-windows';
 
 export default {
   name: 'CodeWindow',
@@ -95,7 +50,8 @@ export default {
     CodeSubWindow,
     Splitter,
     SplitterPanel,
-    CodeToolbar
+    CodeToolbar,
+    CodeWindowEmpty,
   },
 };
 </script>

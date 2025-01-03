@@ -8,61 +8,7 @@ function onNodeClick(event: TreeEvent) {
   console.log("Node Clicked:", event.node.label);
 }
 
-const openFolder = ref(
-  [{
-    key: '0',
-    label: 'Documents',
-    icon: 'pi pi-fw pi-folder',
-    children: [
-      {
-        key: '0-0',
-        label: 'Work',
-        icon: 'pi pi-fw pi-file',
-        children: [
-          {
-            key: '0-0-0',
-            label: 'Expenses.doc',
-            icon: 'pi pi-fw pi-file'
-          },
-          {
-            key: '0-0-1',
-            label: 'Resume.doc',
-            icon: 'pi pi-fw pi-file'
-          },
-        ],
-      },
-      {
-        key: '0-1',
-        label: 'Home',
-        icon: 'pi pi-fw pi-file',
-        children: [
-          {
-            key: '0-1-0',
-            label: 'Invoices.txt',
-            icon: 'pi pi-fw pi-file'
-          },
-        ],
-      },
-    ],
-  },
-  {
-    key: '1',
-    label: 'Pictures',
-    icon: 'pi pi-fw pi-image',
-    children: [
-      {
-        key: '1-0',
-        label: 'barcelona.jpg',
-        icon: 'pi pi-fw pi-image',
-      },
-      {
-        key: '1-1',
-        label: 'logo.png',
-        icon: 'pi pi-fw pi-image',
-      },
-    ],
-  },
-]);
+const openFolder = ref(mockOpenFolder);
 </script>
 
 <template>
@@ -71,7 +17,7 @@ const openFolder = ref(
       :value="openFolder"
       :filter="true"
       filterMode="lenient"
-      class="w-full md:w-[30rem] pa-1"
+      class="w-full md:w-[30rem] pa-0"
       @node-select="onNodeSelect"
       @node-click="onNodeClick"
     ></Tree>
@@ -81,12 +27,9 @@ const openFolder = ref(
 <script lang="ts">
 import { ref } from 'vue';
 import Tree from 'primevue/tree';
-import type { TreeNode } from "primevue/treenode"; // Import the TreeNode type
-
-interface TreeEvent {
-  originalEvent: Event;
-  node: TreeNode;
-}
+import type { TreeEvent } from '../interfaces/tree-event.interface';
+import type { TreeNode } from 'primevue/treenode';
+import { mockOpenFolder } from '../mock-data/open-folder';
 
 export default {
   name: 'CodeSideNav',
@@ -97,4 +40,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+::v-deep(.p-tree-filter .p-inputtext) {
+  padding: 2px 6px;
+  font-size: 0.85rem;
+  height: 36px;
+}
+::v-deep(.p-tree-filter) {
+  margin-bottom: 4px;
+}
 </style>
