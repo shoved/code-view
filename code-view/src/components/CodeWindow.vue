@@ -14,14 +14,48 @@ const windows: Ref<CodeSubWindowInfo[]> = ref([
         language: 'python',
       },
     ],
-  }
+  },
+  {
+    id: 1,
+    files: [
+      {
+        name: 'File1.txt',
+        content: 'This is the content of File1.txt',
+        language: 'text',
+      },
+      {
+        name: 'File2.py',
+        content: 'This is the content of File2.py',
+        language: 'python',
+      },
+    ],
+  },
+  {
+    id: 1,
+    files: [
+      {
+        name: 'File1.txt',
+        content: 'This is the content of File1.txt',
+        language: 'text',
+      },
+      {
+        name: 'File2.py',
+        content: 'This is the content of File2.py',
+        language: 'python',
+      },
+    ],
+  },
 ]);
+
+const windowWidth = computed(() => {
+  return Math.floor(85 / (windows.value.length || 1));
+});
 </script>
 
 <template>
-  <v-container fluid class="splitter-container pa-0">
+  <v-container fluid class="splitter-container px-1 py-0">
     <Splitter style="height: 100%" class="mb-8">
-      <SplitterPanel :size="20" :style="{ flexBasis: '300px', flexGrow: 0, flexShrink: 0 }">
+      <SplitterPanel :size="15">
         <CodeSideNav />
       </SplitterPanel>
 
@@ -29,15 +63,15 @@ const windows: Ref<CodeSubWindowInfo[]> = ref([
         v-for="(window, index) in windows"
         :key="index"
         class="flex items-center justify-center"
-        :size="90"
+        :size="windowWidth"
       >
         <CodeSubWindow v-bind="window"/>
       </SplitterPanel>
 
       <SplitterPanel
         class="flex items-center justify-center"
-        :size="90"
         v-if="windows.length === 0"
+        :size="85"
       >
         <div class="text-center">No windows open</div>
       </SplitterPanel>
@@ -51,7 +85,8 @@ import { type CodeSubWindowInfo } from './CodeSubWindow.vue';
 import CodeSubWindow from './CodeSubWindow.vue';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
-import { type Ref, ref } from 'vue';
+import { type Ref, ref, computed } from 'vue';
+import CodeToolbar from './CodeToolbar.vue';
 
 export default {
   name: 'CodeWindow',
@@ -60,6 +95,7 @@ export default {
     CodeSubWindow,
     Splitter,
     SplitterPanel,
+    CodeToolbar
   },
 };
 </script>
