@@ -22,8 +22,8 @@ const navButtons = ref([
 </script>
 
 <template>
-  <v-app-bar flat color="primary">
-    <v-toolbar-title>{{ title }}</v-toolbar-title>
+  <v-app-bar flat color="secondary" app class="px-10">
+    <v-toolbar-title class="app-title">{{ title }}</v-toolbar-title>
 
     <v-spacer></v-spacer>
   
@@ -32,7 +32,7 @@ const navButtons = ref([
       :key="button.text"
       :to="button.to"
       flat
-      class="nav-btn"
+      class="nav-btn mx-2"
     >
       {{ button.text }}
     </v-btn>
