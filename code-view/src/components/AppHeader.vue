@@ -5,18 +5,22 @@ const navButtons = ref([
   {
     text: "Home",
     to: "/",
+    icon: "mdi-home",
   },
   {
     text: "Code Viewer",
     to: "/code-viewer",
+    icon: "mdi-code-tags",
   },
   {
     text: "Documentation",
     to: "/documentation",
+    icon: "mdi-file-document",
   },
   {
     text: "License",
     to: "/license",
+    icon: "mdi-file-certificate",
   }
 ])
 </script>
@@ -34,6 +38,7 @@ const navButtons = ref([
       flat
       class="nav-btn mx-2"
     >
+      <v-icon left class="mx-2">{{ button.icon }}</v-icon>
       {{ button.text }}
     </v-btn>
   </v-app-bar>
