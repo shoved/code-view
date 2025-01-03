@@ -68,4 +68,9 @@ export default {
   height: 100%; /* Full height */
   width: 100%;  /* Full width */
 }
+
+::v-deep(.p-splitter-gutter) {
+  width: 7px;
+  border: 3px solid white;
+}
 </style>
