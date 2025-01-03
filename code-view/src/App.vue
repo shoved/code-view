@@ -5,6 +5,7 @@
       <router-view />
     </v-main>
     <AppFooter />
+    <Toast />
   </v-app>
 </template>
 
