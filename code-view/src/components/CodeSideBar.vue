@@ -18,19 +18,19 @@ const createFile = () => {
 
 const actionButtons = ref([
   {
-    icon: "mdi-upload",
+    icon: "mdi-upload-outline",
     callback: () => uploadFile(),
   },
   {
-    icon: "mdi-download",
+    icon: "mdi-download-outline",
     callback: () => downloadFile(),
   },
   {
-    icon: "mdi-content-save",
+    icon: "mdi-content-save-outline",
     callback: () => saveFile(),
   },
   {
-    icon: "mdi-file-plus",
+    icon: "mdi-file-plus-outline",
     callback: () => createFile(),
   }
 ])
