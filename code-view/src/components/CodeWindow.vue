@@ -7,7 +7,7 @@ const windowWidth = computed(() => {
 </script>
 
 <template>
-  <v-container fluid class="splitter-container px-1 py-0">
+  <v-container fluid class="splitter-container px-2 py-0">
     <Splitter style="height: 100%" class="mb-8">
       <SplitterPanel :size="15">
         <CodeSideNav />
@@ -19,7 +19,7 @@ const windowWidth = computed(() => {
         class="flex items-center justify-center"
         :size="windowWidth"
       >
-        <CodeSubWindow v-bind="window"/>
+        <CodeSubWindow :id="window.id.toString()" :files="window.files" class="content flex-grow-1 fill-height"/>
       </SplitterPanel>
 
       <SplitterPanel
@@ -35,23 +35,25 @@ const windowWidth = computed(() => {
 
 <script lang="ts">
 import CodeSideNav from './CodeSideNav.vue';
-import CodeSubWindow from './CodeSubWindow.vue';
+import ScrollableTabs from './ScrollableTabs.vue';
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
 import { ref, computed } from 'vue';
 import CodeToolbar from './CodeToolbar.vue';
 import CodeWindowEmpty from './CodeWindowEmpty.vue';
 import { codeViewWindows } from '../mock-data/code-windows';
+import CodeSubWindow from './CodeSubWindow.vue';
 
 export default {
   name: 'CodeWindow',
   components: {
     CodeSideNav,
-    CodeSubWindow,
+    ScrollableTabs,
     Splitter,
     SplitterPanel,
     CodeToolbar,
     CodeWindowEmpty,
+    CodeSubWindow,
   },
 };
 </script>
@@ -61,16 +63,24 @@ export default {
   height: 100%; /* Full height of the parent container */
   width: 100%;  /* Full width of the parent container */
   display: flex;
+  background-color: #282c34;
+  border: none;
 }
 
 /* Ensure the Splitter component takes up all available space */
 .p-splitter {
   height: 100%; /* Full height */
   width: 100%;  /* Full width */
+  border: none;
 }
 
 ::v-deep(.p-splitter-gutter) {
-  width: 7px;
-  border: 3px solid white;
+  width: 1px;
+  border: 1px solid #333;
+  background-color: #282c34;
+}
+
+::v-deep(.p-splitterpanel) {
+  background-color: #282c34;
 }
 </style>

@@ -1,72 +1,84 @@
 <script setup lang="ts">
 const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
   files: {
     type: Array as PropType<CodeFileInfo[]>,
     required: true,
-  },
+  }
+})
+
+const tabs = computed(() => {
+  return props.files.map((file, index) => {
+    return {
+      label: file.name,
+      value: `tab-${index}`,
+    };
+  });
 });
 
-const scrollableTabs = computed(() => {
-  return props.files.map((file, index) => ({
-    title: file.name,
-    content: file.content,
-    value: index.toString(),
-    language: file.language,
-  }));
+const content = computed(() => {
+  return props.files.map(file => {
+    return {
+      name: file.name,
+      language: file.language,
+      content: file.content,
+      path: file.path,
+    }
+  });
 });
+
+const code = ref("def greet(name):\n    return f'Hello, {name}'");
 </script>
 
 <template>
-  <v-container fluid class="pa-1">
-    <Tabs value="0" scrollable>
-      <TabList>
-        <Tab v-for="tab in scrollableTabs" :key="tab.title" :value="tab.value">
-          {{ tab.title }}
-        </Tab>
-      </TabList>
+  <ScrollableTabs :tabs="tabs" >
+    <template v-slot:tab-panels>
+      <TabPanel v-for="(con, index) in content" :key="index" :value="tabs[index].value">
+        <BreadCrumbs :breadcrumbs="pathToBreadcrumbs(con.path)"/>
 
-      <TabPanels>
-        <TabPanel v-for="tab in scrollableTabs" :key="tab.content" :value="tab.value">
-          <CodeEditor :content="tab.content" :language="tab.language" />
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
-  </v-container>
+        <CodeEditor v-model="code"  language="python" />
+      </TabPanel>
+    </template>
+  </ScrollableTabs>
 </template>
 
 <script lang="ts">
-import { computed, type PropType } from 'vue';
+import { computed, ref, type PropType } from 'vue';
+import CodeEditor from './CodeEditor.vue';
+import BreadCrumbs from './BreadCrumbs.vue';
+import ScrollableTabs from './ScrollableTabs.vue';
+import type { CodeFileInfo } from '../interfaces/code-file-info.interface';
+import TabPanel from 'primevue/tabpanel';
 import Tabs from 'primevue/tabs';
 import TabList from 'primevue/tablist';
 import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
-import TabPanel from 'primevue/tabpanel';
-import CodeEditor from './CodeEditor.vue';
-import type { CodeFileInfo } from '../interfaces/code-file-info.interface';
+import { pathToBreadcrumbs } from '../tools/breadCrumbs';
+
 
 export default {
   name: 'CodeSubWindow',
   components: {
+    CodeEditor,
+    BreadCrumbs,
+    ScrollableTabs,
+    TabPanel,
     Tabs,
     TabList,
     Tab,
     TabPanels,
-    TabPanel,
-    CodeEditor
   }
 };
 </script>
 
 <style scoped lang="scss">
-/* Scoped styles for a specific TabView */
-::v-deep(.p-tab) {
-  height: 42px;
-  padding: 0 1rem;
-  font-size: 0.8rem;
-}
-
-::v-deep(.p-tabview-nav) {
-  height: 50px;
-  line-height: 50px;
+::v-deep(.p-tablist-tab-list) {
+  background-color: #282c34;
+  color: white;
+  padding: 0px;
+  border: 1px solid #444;
 }
 </style>

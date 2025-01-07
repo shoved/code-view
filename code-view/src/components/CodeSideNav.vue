@@ -12,7 +12,7 @@ const openFolder = ref(mockOpenFolder);
 </script>
 
 <template>
-  <v-container fluid class="pa-1">
+  <v-container fluid class="pa-3">
     <Tree
       :value="openFolder"
       :filter="true"
@@ -22,6 +22,7 @@ const openFolder = ref(mockOpenFolder);
       @node-click="onNodeClick"
     ></Tree>
   </v-container>
+
 </template>
 
 <script lang="ts">
@@ -40,12 +41,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+::v-deep(.p-tree) {
+  background-color: #282c34;
+  color: white;
+} 
+
 ::v-deep(.p-tree-filter .p-inputtext) {
   padding: 2px 6px;
   font-size: 0.85rem;
   height: 36px;
+  background-color: #282c34;
+  color: white;
 }
 ::v-deep(.p-tree-filter) {
   margin-bottom: 4px;
+}
+
+::v-deep(.p-tree-node-label) {
+  color: white;
 }
 </style>

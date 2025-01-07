@@ -3,7 +3,7 @@ const items = ref(codeToolbarItems);
 </script>
 
 <template>
-  <v-container fluid class="pa-1">
+  <v-container fluid class="pa-1 code-toolbar">
     <Menubar :model="items" >
       <template #item="{ item, props, hasSubmenu }">
         <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
@@ -50,5 +50,9 @@ export default {
 /* Adjust spacing between icons and labels */
 .p-menubar .p-menuitem-link .p-menuitem-icon {
   margin-right: 4px; /* Reduce space between icon and text */
+}
+
+.code-toolbar {
+  background-color: #2d2d2d;
 }
 </style>
