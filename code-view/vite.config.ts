@@ -10,4 +10,16 @@ export default defineConfig({
       autoImport: true,
     }),
   ],
+  optimizeDeps: {
+    exclude: [
+      'codemirror',
+      '@codemirror/commands',
+      '@codemirror/language',
+      '@codemirror/state',
+      '@codemirror/view',
+      '@codemirror/lang-javascript',
+      '@lezer/highlight',
+      '@codemirror/lang-python'
+    ]
+  }
 })

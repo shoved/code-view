@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router'; // Import the router
 import vuetify from './plugins/vuetify'; // Import Vuetify
-import './assets/styles/main.scss';
+import './styles/main.scss';
 import PrimeVue from 'primevue/config';
 import Aura from '@primevue/themes/aura';
 

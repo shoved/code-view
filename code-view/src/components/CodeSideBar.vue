@@ -18,19 +18,19 @@ const createFile = () => {
 
 const actionButtons = ref([
   {
-    icon: "mdi-upload",
+    icon: "mdi-upload-outline",
     callback: () => uploadFile(),
   },
   {
-    icon: "mdi-download",
+    icon: "mdi-download-outline",
     callback: () => downloadFile(),
   },
   {
-    icon: "mdi-content-save",
+    icon: "mdi-content-save-outline",
     callback: () => saveFile(),
   },
   {
-    icon: "mdi-file-plus",
+    icon: "mdi-file-plus-outline",
     callback: () => createFile(),
   }
 ])
@@ -39,32 +39,39 @@ const iconColor = ref("white");
 </script>
 
 <template>
-  <v-navigation-drawer
-    :rail="true"
-    permanent
-    class="side-bar"
-    color="secondary"
-  >
-    <v-list>
+  <v-container class="code-side-bar pa-0">
+    <v-list style="width: 54px" class="code-side-bar-list">
       <v-list-item
         v-for="button in actionButtons"
         :key="button.icon"
         @click="button.callback"
+        class="code-side-bar-list-item"
       >
-        <v-list-item-icon>
-          <v-icon :color="iconColor">{{ button.icon }}</v-icon>
-        </v-list-item-icon>
+        <v-icon :color="iconColor">{{ button.icon }}</v-icon>
       </v-list-item>
     </v-list>
-  </v-navigation-drawer>
+  </v-container>
 </template>
 
 <script lang="ts">
 import { ref } from 'vue';
 
 export default {
-  name: 'AppSideBar',
+  name: 'CodeSideBar',
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.code-side-bar {
+  width: 100px;
+
+  &-list {
+    background-color: #2d2d2d;
+
+    &-item {
+      background-color: #2d2d2d;
+      height: 54px;
+    }
+  }
+}
+</style>
