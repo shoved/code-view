@@ -22,26 +22,29 @@ const navButtons = ref([
 </script>
 
 <template>
-  <v-footer flat color="secondary" app class="footer">
-    <v-row justify="center" no-gutters>
-      <v-btn
-        v-for="button in navButtons"
-        :key="button.text"
-        :to="button.to"
-        flat
-        class="nav-btn"
-        color="secondary"
-      >
-        {{ button.text }}
-      </v-btn>
-
-      <v-col class="text-center mt-4" cols="12">
+  <v-container>
+    <v-footer flat color="secondary" app class="footer">
+      <v-row justify="center" no-gutters>
         <div class="copyright">
           {{  copyright }}
         </div>
-      </v-col>
-    </v-row>
-  </v-footer>
+
+        <v-spacer></v-spacer>
+
+        <v-btn
+          v-for="button in navButtons"
+          :key="button.text"
+          :to="button.to"
+          flat
+          class="nav-btn"
+          color="secondary"
+        >
+          {{ button.text }}
+        </v-btn>
+      </v-row>
+    </v-footer>
+  </v-container>
+
 </template>
 
 <script lang="ts">
